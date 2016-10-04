@@ -1,12 +1,14 @@
 #include <iostream>
-#include "Card.hpp"
-#include "CardDeque.hpp"
-
 #include <string>
 #include <random>
 #include <memory>
 // Pour la couleur
 #include <cstdio>
+#include <functionnal>
+
+#include "Card.hpp"
+#include "CardDeque.hpp"
+
 
 int main() {
     bool again;
