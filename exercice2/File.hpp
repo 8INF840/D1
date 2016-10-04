@@ -1,5 +1,8 @@
 #pragma once
 
+#include <stdexcept>
+#include <iostream>
+
 // --------------------------- Déclaration des méthodes ---------------------------
 
 template<typename T>

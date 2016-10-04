@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <string>
-#include <windows.h>
+#include <cstdio>
 
 Machine::Machine(const TypePiece & t, const float & tp) {
 	// Initialisation des attributs
@@ -117,8 +117,7 @@ float Machine::genererPanne() {
 }
 
 void Machine::afficherPanne(const TypePiece & type, const bool & debut) {
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	int couleur = 15;
+	int couleur = 7;
 	std::string texte = "";
 	// Si début de la panne
 	if (debut) {
@@ -132,51 +131,52 @@ void Machine::afficherPanne(const TypePiece & type, const bool & debut) {
 	switch (type) {
 	case TypePiece::tete:
 		texte = texte + "MT";
-		couleur = 10;
+		couleur = 2;
 		break;
 	case TypePiece::jupe:
 		texte = texte + "MJ";
-		couleur = 11;
+		couleur = 4;
 		break;
 	case TypePiece::axe:
 		texte = texte + "MA";
-		couleur = 14;
+		couleur = 3;
 		break;
 	case TypePiece::piston:
 		texte = texte + "MP";
-		couleur = 12;
+		couleur = 1;
 		break;
 	}
-	SetConsoleTextAttribute(hConsole, couleur);
+    auto color = ("%c[1;3" + std::to_string(couleur) + "m").c_str();
+    std::printf(color, 27);
 	std::cout << texte << std::endl;
 	// On rétablit la couleur à blanc
-	SetConsoleTextAttribute(hConsole, 15);
+    std::printf("%c[1;37m", 27);
 }
 
 void Machine::finPiece(const TypePiece & type) {
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	int couleur = 15;
+	int couleur = 7;
 	std::string texte = "";
 	switch (type) {
 	case TypePiece::tete :
 		texte = "Tete fabriquee";
-		couleur = 10;
+		couleur = 2;
 		break;
 	case TypePiece::jupe:
 		texte = "Jupe fabriquee";
-		couleur = 11;
+		couleur = 4;
 		break;
 	case TypePiece::axe:
 		texte = "Axe fabrique";
-		couleur = 14;
+		couleur = 3;
 		break;
 	case TypePiece::piston:
 		texte = "Piston fabrique";
-		couleur = 12;
+		couleur = 1;
 		break;
 	}
-	SetConsoleTextAttribute(hConsole, couleur);
+    auto color = ("%c[1;3" + std::to_string(couleur) + "m").c_str();
+    std::printf(color, 27);
 	std::cout << texte << std::endl;
 	// On rétablit la couleur à blanc
-	SetConsoleTextAttribute(hConsole, 15);
+    std::printf("%c[1;37m", 27);
 }
