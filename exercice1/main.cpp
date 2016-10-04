@@ -5,13 +5,17 @@
 #include <string>
 #include <random>
 #include <memory>
+// Pour la couleur
+#include <cstdio>
 
 int main() {
     bool again;
     do {
         // Choix du nombre de cartes par joueur
         int n;
+        std::printf("%c[1;31m", 27); // Red
         std::cout << "# Initialisation du jeu :" << std::endl;
+        std::printf("%c[1;37m", 27); // White
         std::cout << "Nombre de cartes pour chaque joueur : ";
         std::cin >> n;
 
@@ -47,7 +51,9 @@ int main() {
         std::cout << "Score du joueur 2 : " << dequeJoueurDeux.score() << std::endl;
 
         // Lancement
+        std::printf("%c[1;31m", 27); // Red
         std::cout << std::endl << "# Déroulement du jeu :" << std::endl;
+        std::printf("%c[1;37m", 27); // White
         CardDeque gainsJoueurUn;
         CardDeque gainsJoueurDeux;
         for(int k = 0; k < n; k++) {
@@ -72,16 +78,29 @@ int main() {
         }
 
         // Calcul des scores
+        std::printf("%c[1;31m", 27); // Red
         std::cout << std::endl << "# Fin du jeu :" << std::endl;
+        std::printf("%c[1;37m", 27); // White
         std::cout << "Cartes gagnées du joueur 1 : " << gainsJoueurUn << std::endl;
         std::cout << "Cartes gagnées du joueur 2 : " << gainsJoueurDeux << std::endl;
         std::cout << "Score du joueur 1 : " << gainsJoueurUn.score() << std::endl;
         std::cout << "Score du joueur 2 : " << gainsJoueurDeux.score() << std::endl;
 
-        std::string doAgain;
-        std::cout << std::endl << "Recommencer ? (oui/non)";
-        std::cin >> doAgain;
         std::cout << std::endl;
-        again = doAgain.compare("oui") == 0;
+        bool answer = false;
+        while(!answer) {
+            std::string doAgain;
+            std::cout << "Recommencer ? (oui/non)";
+            std::cin >> doAgain;
+            if(doAgain.compare("oui") == 0) {
+                answer = true;
+                again = true;
+            }
+            else if(doAgain.compare("non") == 0) {
+                answer = true;
+                again = false;
+            }
+        }
+        std::cout << std::endl;
     } while(again);
 }

@@ -1,4 +1,4 @@
-.PHONY: app
+.PHONY: exercice1
 
-app:
-	g++ --std=c++14 main.cpp -o app
+exercice1:
+	g++ --std=c++14 main.cpp -o exercice1
