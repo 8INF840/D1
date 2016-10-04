@@ -4,7 +4,7 @@
 #include <memory>
 // Pour la couleur
 #include <cstdio>
-#include <functionnal>
+#include <functional>
 
 #include "Card.hpp"
 #include "CardDeque.hpp"
